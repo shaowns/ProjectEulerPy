@@ -5,15 +5,20 @@ def is_palindrome(n):
 
 
 def main():
-    palindromes = []
+    largest = 0
     for i in xrange(999, 100, -1):
-        for j in xrange(999, 100, -1):
+        # It suffices to check j till i, otherwise we do some multiplication more than once.
+        for j in xrange(999, i+1, -1):
             number = i*j
-            if is_palindrome(number):
-                palindromes.append(number)
+            if number < largest:
+                # There is no chance for j to catch up with the largest,
+                # try with next i.
+                break
 
-    palindromes.sort(key=int, reverse=True)
-    print palindromes[0]
+            if is_palindrome(number) and number > largest:
+                largest = number
+
+    print largest
     return 0
 
 

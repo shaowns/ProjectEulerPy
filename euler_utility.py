@@ -42,3 +42,26 @@ def is_prime_eff(n):
 
         # Reached here, must be prime.
         return True
+
+
+# Basic implementation of sieve of Eratosthenes.
+def prime_sieve(limit):
+    cross_limit = int(sqrt(limit))
+    sieve = [False for _ in xrange(0, limit + 1)]
+
+    # For ease of implementation start with 0 index, 0 and 1 are not prime.
+    sieve[0] = True
+    sieve[1] = True
+
+    # Mark out even numbers starting from 4.
+    for n in xrange(4, limit + 1, 2):
+        sieve[n] = True
+
+    # Start with 3 and work with odd numbers up to the cross limit.
+    for i in xrange(3, cross_limit + 1, 2):
+        if not sieve[i]:
+            # Sieve is not marked here.
+            for j in xrange(i ** 2, limit + 1, 2 * i):
+                sieve[j] = True
+
+    return sieve

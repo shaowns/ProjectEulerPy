@@ -7,7 +7,7 @@ Created on Wed Oct 14 15:12:24 2015
 """
 Function to determine sum of multiples of any number less than maximum. Since,
 n + 2n + 3n + .... = n * (1 + 2 + 3 + .....) and 1 + 2+ 3 + ... = 0.5 * n(n+1).
-To find n, we just use int(maximum -1 div number)
+To find n, we just use int(maximum -1 div number).
 """
 def sumDivisibleBy(number, maximum):
     term_count = (maximum -1)/number
